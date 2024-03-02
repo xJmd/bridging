@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Upload Clip</title>
+</head>
+<body>
+    <form action="/submit_clip" method="post" enctype="multipart/form-data">
+        <label for="username">Minecraft Username:</label>
+        <input type="text" id="username" name="username"><br><br>
+        
+        <label for="title">Title:</label>
+        <input type="text" id="title" name="title"><br><br>
+
+        <label for="time">Bridge Time:</label>
+        <input type="text" id="time" name="time"><br><br>
+         
+        <label for="clip">Upload Clip:</label>
+        <input type="file" id="clip" name="clip"><br><br>
+
+
+        
+        <input type="submit" value="Submit Clip">
+    </form>
+</body>
+</html>
