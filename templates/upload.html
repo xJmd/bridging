@@ -4,24 +4,85 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Upload Clip</title>
+    <style>
+        body {
+            background-color: #222; 
+            color: #ccc; 
+            font-family: Arial, sans-serif; 
+        }
+        
+        form {
+            margin: 50px auto;
+            padding: 20px;
+            max-width: 400px;
+            background-color: #333; 
+            border-radius: 10px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 10px;
+        }
+
+        input[type="text"], input[type="file"], input[type="submit"] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: none;
+            background-color: #444; 
+            color: #ccc; 
+            border-radius: 5px;
+        }
+
+        input[type="submit"] {
+            background-color: #555; 
+            cursor: pointer;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #666; 
+        }
+        
+        h1{
+            text-align: center;
+            display: none;
+        }
+    </style>
 </head>
 <body>
-    <form action="/submit_clip" method="post" enctype="multipart/form-data">
+    <form id="uploadForm" action="/submit_clip" method="post" enctype="multipart/form-data" onsubmit="submitForm(event)">
         <label for="username">Minecraft Username:</label>
-        <input type="text" id="username" name="username"><br><br>
+        <input type="text" id="username" name="username" placeholder="Technoblade" required>
         
-        <label for="title">Title:</label>
-        <input type="text" id="title" name="title"><br><br>
+        <label for="title">Bridging Method:</label>
+        <input type="text" id="title" name="title" placeholder="Telly Bridging"  required>
 
         <label for="time">Bridge Time:</label>
-        <input type="text" id="time" name="time"><br><br>
+        <input type="text" id="time" name="time" placeholder="4.250" required>
          
-        <label for="clip">Upload Clip:</label>
-        <input type="file" id="clip" name="clip"><br><br>
-
-
+        <label for="clip">Upload Clip (MP4):</label>
+        <input type="file" id="clip" name="clip" required>
         
         <input type="submit" value="Submit Clip">
     </form>
+
+    <h1 id="text">Posting</h1>
+    <div id="loadingBar"></div>
+
+    <script>
+        
+        function submitForm(event) {
+            document.getElementById("text").style.display = "block"; // Display the message
+
+            var dots = 0;
+            var interval = setInterval(function() {
+                dots++;
+                if (dots > 3) dots = 1;
+                var text = "Posting" + ".".repeat(dots);
+                document.getElementById("text").textContent = text;
+            }, 500); // Change the interval duration as needed
+
+        }
+    </script>
 </body>
 </html>
